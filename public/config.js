@@ -1,5 +1,5 @@
 System.config({
-  baseURL: "https://bertha.firebaseapp.com/",
+  baseURL: "/",
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
