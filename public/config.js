@@ -16,6 +16,7 @@ System.config({
   map: {
     "angular": "github:angular/bower-angular@1.4.8",
     "angular-material": "github:angular/bower-material@1.0.1",
+    "angular-route": "github:angular/bower-angular-route@1.4.8",
     "angularfire": "github:firebase/angularfire@1.1.3",
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
@@ -24,6 +25,9 @@ System.config({
       "angular": "github:angular/bower-angular@1.4.8"
     },
     "github:angular/bower-angular-aria@1.4.8": {
+      "angular": "github:angular/bower-angular@1.4.8"
+    },
+    "github:angular/bower-angular-route@1.4.8": {
       "angular": "github:angular/bower-angular@1.4.8"
     },
     "github:angular/bower-material@1.0.1": {
