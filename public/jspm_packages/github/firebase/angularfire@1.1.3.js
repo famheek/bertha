@@ -1,0 +1,1 @@
+module.exports = require("github:firebase/angularfire@1.1.3/index.js");
