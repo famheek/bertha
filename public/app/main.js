@@ -11,6 +11,10 @@ import dashboardTmpl from '../templates/dashboard.html!';
 import adminTmpl from '../templates/admin.html!';
 import welcomeTmpl from '../templates/welcome.html!';
 
+import '../style/welcome.css!';
+import '../style/dashboard.css!';
+import '../style/admin.css!';
+
 export default angular.module('App', [angularMaterial, 'ngRoute', angularFire])
   .controller(AdminController.name, AdminController)
   .controller(WelcomeController.name, WelcomeController)
