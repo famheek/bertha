@@ -1,13 +1,14 @@
 
+import {getDashboard} from '../../lib/firebase';
+
 export default class AdminController {
 
-  constructor($scope, $routeParams, FirebaseUtils) {
+  constructor($scope, $routeParams, $firebaseObject) {
     let dashboardId = $routeParams.id;
-    console.log(dashboardId)
-    FirebaseUtils.loadFirebaseObject(dashboardId, 'dashboard').$bindTo($scope, 'dashboard');
+    $firebaseObject(getDashboard(dashboardId)).$bindTo($scope, 'dashboard');
 
   }
 
 }
 
-AdminController.$inject = ['$scope', '$routeParams', 'FirebaseUtils'];
+AdminController.$inject = ['$scope', '$routeParams', '$firebaseObject'];
