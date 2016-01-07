@@ -8,12 +8,15 @@ import WelcomeController from './controllers/welcome';
 import AdminController from './controllers/admin';
 
 import DashboardDirective from './directives/dashboard';
+import NotificationDirective from './directives/notification';
 
 import dashboardTmpl from '../templates/dashboard.html!';
 import adminTmpl from '../templates/admin.html!';
 import welcomeTmpl from '../templates/welcome.html!';
 
 import 'font-awesome/css/font-awesome.min.css!';
+
+import 'angular-material/angular-material.css!';
 
 import '../style/welcome.css!';
 import '../style/dashboard.css!';
@@ -25,6 +28,7 @@ export default angular.module('App', [angularMaterial, 'ngRoute', angularFire])
   .controller(DashboardController.name, DashboardController)
 
   .directive(DashboardDirective.name, DashboardDirective)
+  .directive(NotificationDirective.name, NotificationDirective)
 
   .config(function($routeProvider, $locationProvider) {
     $routeProvider

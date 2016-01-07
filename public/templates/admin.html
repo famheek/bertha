@@ -1,1 +1,16 @@
-<pre>{{dashboard | json}}</pre>
+<div layout="row">
+  <bertha-dashboard flex="66" date="now" notifications="[]" options="{}">
+  </bertha-dashboard>
+  <md-card flex="33">
+    <md-subheader class="md-primary">Notificaties</md-subheader>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="{{notificationGroup.name}}" ng-repeat="notificationGroup in notificationGroups">
+        <div ng-repeat="notification in notificationGroup.notifications">
+          <bertha-notification notification="notification" editable="notificationGroup.editable"></bertha-notification>
+        </div>
+
+      </md-tab>
+    </md-tabs>
+
+  </md-card>
+</div>
