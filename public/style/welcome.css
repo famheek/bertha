@@ -1,5 +1,5 @@
 .share-button {
-	text-align: left;
+	text-align: left !important;
 }
 
 .share-icon-padding {
@@ -12,4 +12,8 @@
 
 .login-div-width {
   min-width: 250px;
+}
+
+.bartabello-icon {
+  margin: 0px 16px 0px 0px;
 }
