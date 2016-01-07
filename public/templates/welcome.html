@@ -5,20 +5,23 @@
   </div>
 </md-toolbar>
 
-<md-content layout="column">
-  <md-button class="md-primary md-raised" ng-click="authFacebookUser()">Facebook</md-button>
-  <form ng-sumbit="authEmailUser(email, password)">
-    <md-input-container>
-      <label>Email</label>
-      <input ng-model="email"></input>
-    </md-input-container>
-    <md-input-container>
-      <label>Wachtwoord</label>
-      <input type="password" ng-model="password"></input>
-    </md-input-container>
-    <div layout="row">
-      <md-button class="md-primary md-raised" ng-click="authEmailUser(email, password)">Log in</md-button>
-      <md-button class="md-primary" type="button">Meld aan</md-button>
-    </div>
-  </form>
-</md-content>
+<div layout="row" layout-align="center center">
+  <div layout="column" layout-align="center">
+    <h1>Welkom</h1><i class="fa fa-camera-retro"></i> fa-camera-retro
+    <md-button class="md-primary md-raised" ng-click="authFacebookUser()">Facebook</md-button>
+    <form ng-sumbit="authEmailUser(email, password)" layout="column">
+      <md-input-container>
+        <label>Email</label>
+        <input ng-model="email"></input>
+      </md-input-container>
+      <md-input-container>
+        <label>Wachtwoord</label>
+        <input type="password" ng-model="password"></input>
+      </md-input-container>
+      <div layout="row">
+        <md-button class="md-primary md-raised" ng-click="authEmailUser(email, password)">Log in</md-button>
+        <md-button class="md-primary" type="button">Meld aan</md-button>
+      </div>
+    </form>
+  </div>
+</div>

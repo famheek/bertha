@@ -13,6 +13,8 @@ import dashboardTmpl from '../templates/dashboard.html!';
 import adminTmpl from '../templates/admin.html!';
 import welcomeTmpl from '../templates/welcome.html!';
 
+import 'font-awesome/css/font-awesome.min.css!';
+
 import '../style/welcome.css!';
 import '../style/dashboard.css!';
 import '../style/admin.css!';
