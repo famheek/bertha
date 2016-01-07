@@ -7,6 +7,8 @@ import DashboardController from './controllers/dashboard';
 import WelcomeController from './controllers/welcome';
 import AdminController from './controllers/admin';
 
+import DashboardDirective from './directives/dashboard';
+
 import dashboardTmpl from '../templates/dashboard.html!';
 import adminTmpl from '../templates/admin.html!';
 import welcomeTmpl from '../templates/welcome.html!';
@@ -19,6 +21,8 @@ export default angular.module('App', [angularMaterial, 'ngRoute', angularFire])
   .controller(AdminController.name, AdminController)
   .controller(WelcomeController.name, WelcomeController)
   .controller(DashboardController.name, DashboardController)
+
+  .directive(DashboardDirective.name, DashboardDirective)
 
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
