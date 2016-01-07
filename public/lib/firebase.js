@@ -1,4 +1,3 @@
-
 import Firebase from 'firebase';
 
 const firebaseEndpoint = 'http://bertha.firebaseio.com/';
@@ -20,4 +19,40 @@ export function findDashboardsByOwner(ownerId) {
 
 export function getDashboard(dashboardId) {
 	return dashboards.child(dashboardId);
+}
+
+export function authEmailUser(email, password) {
+	root.authWithPassword({
+		email: email,
+		password: password
+	}, function(error, authData){
+		if(error) {
+			console.log(error);
+		} else {
+			console.log(authData);
+		}
+	});
+}
+
+export function createEmailUser(email, password) {
+	root.createUser({
+		email: email,
+		password: password
+	}, function(error, userData) {
+		if(error) {
+			console.log(error);
+		} else {
+			console.log(userData);
+		}
+	});
+}
+
+export function authFacebookUser() {
+	root.authWithOAuthPopup("facebook", function(error, authData) {
+		if(error) {
+			console.log(error);
+		} else {
+			console.log(authData);
+		}
+	});
 }
