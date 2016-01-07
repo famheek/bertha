@@ -6,9 +6,12 @@
 </md-toolbar>
 
 <div layout="row" layout-align="center center">
-  <div layout="column" layout-align="center">
-    <h1>Welkom</h1><i class="fa fa-camera-retro"></i> fa-camera-retro
-    <md-button class="md-primary md-raised" ng-click="authFacebookUser()">Facebook</md-button>
+  <div  class="login-div-width" layout="column" layout-align="center">
+    <h1 class="centered-text">Welkom</h1>
+    <md-button class="md-primary md-raised share-button facebook-button" ng-click="authFacebookUser()">
+      <i class="fa fa-facebook share-icon-padding"></i>
+      Facebook
+    </md-button>
     <form ng-sumbit="authEmailUser(email, password)" layout="column">
       <md-input-container>
         <label>Email</label>
@@ -19,8 +22,8 @@
         <input type="password" ng-model="password"></input>
       </md-input-container>
       <div layout="row">
-        <md-button class="md-primary md-raised" ng-click="authEmailUser(email, password)">Log in</md-button>
-        <md-button class="md-primary" type="button">Meld aan</md-button>
+        <md-button class="md-primary md-raised" ng-click="authEmailUser(email, password)" flex>Log in</md-button>
+        <md-button class="md-primary" type="button" flex>Meld aan</md-button>
       </div>
     </form>
   </div>
