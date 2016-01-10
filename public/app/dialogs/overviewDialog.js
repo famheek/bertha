@@ -3,6 +3,11 @@ import {findOwnedDashboards, findDashboardsByOwner, addDashboard} from '../../li
 export default function overviewController($scope, $location, $mdDialog) {
 
 	$scope.ownedDashboards = [];
+	$scope.loaded = false;
+
+	$scope.addDashboard = function() {
+		addDashboard();
+	}
 
 	$scope.openAdmin = function() {
 		$location.path('/' + $scope.ownedDashboards[0] + '/admin');
@@ -11,13 +16,13 @@ export default function overviewController($scope, $location, $mdDialog) {
 
 
 	$scope.openDashboard = function() {
-		addDashboard();
 		$location.path('/' + $scope.ownedDashboards[0] + '/dashboard');
 		$mdDialog.hide();
 	}
 
 	findOwnedDashboards().on("child_added", function(snapshot) {
   		$scope.ownedDashboards.push(snapshot.key());
+  		$scope.loaded = true;
 	});
 
 }
