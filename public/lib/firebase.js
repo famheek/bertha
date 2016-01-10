@@ -47,12 +47,8 @@ export function createEmailUser(email, password) {
 	});
 }
 
-export function authFacebookUser() {
+export function authFacebookUser(functionOnComplete) {
 	root.authWithOAuthPopup("facebook", function(error, authData) {
-		if(error) {
-			console.log(error);
-		} else {
-			console.log(authData);
-		}
+		functionOnComplete()
 	});
 }
