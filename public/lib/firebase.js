@@ -25,11 +25,9 @@ export function authEmailUser(email, password) {
 	root.authWithPassword({
 		email: email,
 		password: password
-	}, function(error, authData){
-		if(error) {
-			console.log(error);
-		} else {
-			console.log(authData);
+	}, function(){
+		if(functionOnComplete) {
+			functionOnComplete()
 		}
 	});
 }
@@ -38,17 +36,13 @@ export function createEmailUser(email, password) {
 	root.createUser({
 		email: email,
 		password: password
-	}, function(error, userData) {
-		if(error) {
-			console.log(error);
-		} else {
-			console.log(userData);
-		}
 	});
 }
 
 export function authFacebookUser(functionOnComplete) {
-	root.authWithOAuthPopup("facebook", function(error, authData) {
-		functionOnComplete()
+	root.authWithOAuthPopup("facebook", function() {
+		if(functionOnComplete) {
+			functionOnComplete()
+		}
 	});
 }
