@@ -17,3 +17,7 @@
 .bartabello-icon {
   margin: 0px 16px 0px 0px;
 }
+
+md-dialog-content {
+	padding: 16px;
+}

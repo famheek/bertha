@@ -12,7 +12,7 @@
       <i class="fa fa-facebook share-icon-padding"></i>
       Facebook
     </md-button>
-    <form ng-sumbit="authEmailUser(email, password)" layout="column">
+    <form ng-submit="authEmailUser(email, password)" layout="column">
       <md-input-container>
         <label>Email</label>
         <input ng-model="email"></input>
@@ -22,8 +22,8 @@
         <input type="password" ng-model="password"></input>
       </md-input-container>
       <div layout="row">
-        <md-button class="md-primary md-raised" ng-click="authEmailUser(email, password)">Log in</md-button>
-        <md-button class="md-primary" type="button">Meld aan</md-button>
+        <md-button class="md-primary md-raised" type="submit">Log in</md-button>
+        <md-button class="md-primary" type="button" ng-click="showSignUpDialog()">Registreer</md-button>
       </div>
     </form>
   </div>

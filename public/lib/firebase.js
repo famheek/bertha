@@ -21,28 +21,32 @@ export function getDashboard(dashboardId) {
 	return dashboards.child(dashboardId);
 }
 
-export function authEmailUser(email, password) {
+export function authEmailUser(email, password, functionOnComplete) {
 	root.authWithPassword({
 		email: email,
 		password: password
-	}, function(){
+	}, function(error, authData){
 		if(functionOnComplete) {
-			functionOnComplete()
+			functionOnComplete(error);
 		}
 	});
 }
 
-export function createEmailUser(email, password) {
+export function createEmailUser(email, password, functionOnComplete) {
 	root.createUser({
 		email: email,
 		password: password
+	}, function(error, authData) {
+		if(functionOnComplete) {
+			functionOnComplete(error);
+		}
 	});
 }
 
 export function authFacebookUser(functionOnComplete) {
-	root.authWithOAuthPopup("facebook", function() {
+	root.authWithOAuthPopup("facebook", function(error, authData) {
 		if(functionOnComplete) {
-			functionOnComplete()
+			functionOnComplete(error);
 		}
 	});
 }

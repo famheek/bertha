@@ -1,5 +1,6 @@
 import {authEmailUser, createEmailUser, authFacebookUser} from '../../lib/firebase';
 import overviewController from '../dialogs/overviewDialog';
+import signUpController from '../dialogs/signUpDialog';
 
 export default class WelcomeController {
 
@@ -10,23 +11,29 @@ export default class WelcomeController {
     }
 
     $scope.authEmailUser = function(email, password) {
-      authEmailUser(email, password);
+      authEmailUser(email, password, function(error) {
+        if(!error) {
+          showOverviewDialog();
+        }
+      });
     }
-
-    $scope.createEmailUser = function(email, password) {
-      createEmailUser(email, password);
-    }
-
-    // $scope.linkToPage = function(path) {
-    //   $location.path(path);
-    // }
 
   function showOverviewDialog() {
     $mdDialog.show({
       controller: overviewController,
       templateUrl: 'app/dialogs/overviewDialog.html',
       parent: angular.element(document.body)
-      //fullscreen: useFullScreen
+    });
+  }
+
+  $scope.showSignUpDialog = function() {
+    $mdDialog.show({
+      controller: signUpController,
+      templateUrl: 'app/dialogs/signUpDialog.html',
+      parent: angular.element(document.body)
+    })
+    .then(function(email) {
+      $scope.email = email;
     });
   }
 
