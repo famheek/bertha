@@ -1,0 +1,21 @@
+bertha-notification .md-ripple-container {
+  transition: opacity linear 1s;
+}
+
+bertha-notification.expanded .md-ripple-container {
+  opacity: 0;
+}
+
+bertha-notification md-input-container {
+  margin-top: 4px;
+}
+
+bertha-notification .time-picker {
+  margin-left: 10px;
+}
+
+bertha-notification md-input-container md-icon {
+  font-size: 24px !important;
+  color: rgba(0, 0, 0, .54);
+
+}

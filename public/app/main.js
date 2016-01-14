@@ -3,6 +3,8 @@ import angularMaterial from 'angular-material';
 import angularRoute from 'angular-route';
 import angularFire from 'angularfire';
 
+import moment from 'moment';
+
 import DashboardController from './controllers/dashboard';
 import WelcomeController from './controllers/welcome';
 import AdminController from './controllers/admin';
@@ -18,6 +20,7 @@ import 'font-awesome/css/font-awesome.min.css!';
 
 import 'angular-material/angular-material.css!';
 
+import '../style/app.css!';
 import '../style/welcome.css!';
 import '../style/dashboard.css!';
 import '../style/admin.css!';
@@ -29,6 +32,33 @@ export default angular.module('App', [angularMaterial, 'ngRoute', angularFire])
 
   .directive(DashboardDirective.name, DashboardDirective)
   .directive(NotificationDirective.name, NotificationDirective)
+
+  .config(function($mdDateLocaleProvider) {
+    // Example of a French localization.
+    $mdDateLocaleProvider.months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+    $mdDateLocaleProvider.shortMonths = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'okt', 'nov', 'dec'];
+    $mdDateLocaleProvider.days = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
+    $mdDateLocaleProvider.shortDays = ['zon', 'man', 'din', 'woe', 'don', 'vri', 'zat'];
+    // Can change week display to start on Monday.
+    $mdDateLocaleProvider.firstDayOfWeek = 0;
+    $mdDateLocaleProvider.parseDate = function(dateString) {
+      var m = moment(dateString, 'L', true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+    $mdDateLocaleProvider.formatDate = function(date) {
+      return moment(date).format('L');
+    };
+    $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
+      return $mdDateLocaleProvider.shortMonths[date.getMonth()] + ' ' + date.getFullYear();
+    };
+    // In addition to date display, date components also need localized messages
+    // for aria-labels for screen-reader users.
+    $mdDateLocaleProvider.weekNumberFormatter = function(weekNumber) {
+      return 'Semaine ' + weekNumber;
+    };
+    $mdDateLocaleProvider.msgCalendar = 'Calender';
+    $mdDateLocaleProvider.msgOpenCalendar = 'Open calander';
+  })
 
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
