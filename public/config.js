@@ -25,6 +25,7 @@ System.config({
     "firebase": "github:firebase/firebase-bower@2.3.2",
     "font-awesome": "npm:font-awesome@4.5.0",
     "html": "github:systemjs/plugin-text@0.0.4",
+    "moment": "npm:moment@2.11.1",
     "github:angular/bower-angular-animate@1.4.8": {
       "angular": "github:angular/bower-angular@1.4.8"
     },
@@ -69,6 +70,9 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:moment@2.11.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
