@@ -12,7 +12,6 @@ function getTime(date) {
   }
   mins = direction ? mins : 60 - mins;
 
-
   let isHalf = mins > 15;
   if (isHalf) {
     mins = 30 - mins;
@@ -42,6 +41,20 @@ function getTime(date) {
   return [mins, direction, hours];
 }
 
+const dayparts = {
+  6: 'Ochtend',
+  12: 'Middag',
+  18: 'Avond',
+  23: 'Nacht'
+};
+
+function getDaypart(hour) {
+  if (dayparts[hour] === undefined) {
+    return getDaypart((hour - 1) % 24);
+  }
+  return dayparts[hour];
+};
+
 export default function berthaDashboard() {
   return {
     template: dashboardTmpl,
@@ -59,6 +72,7 @@ export default function berthaDashboard() {
         scope.month = months[date.getMonth()];
         scope.year = date.getFullYear();
         [scope.minutes, scope.minutesDirection, scope.hours] = getTime(date);
+        scope.daypart = getDaypart(date.getHours());
       })
 
     }
