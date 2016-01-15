@@ -1,25 +1,30 @@
-<div layout="row" ng-if="loaded">
+<div class="splash" layout="row" ng-if="loaded">
   <bertha-dashboard class="dark-theme" hide show-gt-sm flex="66" date="now" notifications="[]" options="{}">
   </bertha-dashboard>
 
-  <md-card flex>
-    <md-subheader class="md-primary">Actieve afspraken</md-subheader>
+  <md-content flex>
+    <md-card>
 
-    <div ng-repeat="notification in dashboard.notifications">
-      <bertha-notification
-        notification="notification"
-        removable="true"
-        on-remove="removeNotification(notification)">
-      </bertha-notification>
-    </div>
-    <md-subheader class="md-primary">Nieuwe afspraak</md-subheader>
-    <bertha-notification
-      notification="draftNotification"
-      force-expand="true"
-      show-add-btn="true"
-      on-add="pushDraftNotification()">
-    </bertha-notification>
-  </md-card>
+        <md-subheader class="md-primary">Actieve afspraken</md-subheader>
+
+        <div ng-repeat="notification in dashboard.notifications">
+          <bertha-notification
+            notification="notification"
+            removable="true"
+            on-remove="removeNotification(notification)">
+          </bertha-notification>
+        </div>
+        <md-subheader class="md-primary">Nieuwe afspraak</md-subheader>
+        <bertha-notification
+          notification="draftNotification"
+          force-expand="true"
+          show-add-btn="true"
+          on-add="pushDraftNotification()">
+        </bertha-notification>
+
+
+    </md-card>
+  </md-content>
 </div>
 <div class="splash" layout layout-align="center center" ng-if="!loaded">
   <md-progress-circular md-mode="indeterminate"></md-progress-circular>

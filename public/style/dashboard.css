@@ -5,12 +5,16 @@ bertha-dashboard .important {
   margin-right: 10px;
 }
 
-bertha-dashboard.dark-theme {
-  background-color: #000;
-  color: #fff;
+bertha-dashboard {
   font-size: 30px;
   font-weight: 500;
   font-family: "Helvetica Neue" "Roboto" Arial
+}
+
+bertha-dashboard.dark-theme {
+  background-color: #000;
+  color: #fff;
+
 }
 
 bertha-dashboard {
@@ -21,5 +25,3 @@ bertha-dashboard .today span, bertha-dashboard .now > span {
   vertical-align: middle;
   text-transform: uppercase;
 }
-
-bertha-dashboard
