@@ -14,6 +14,7 @@ function getTime(date) {
 
   let isHalf = mins > 15;
   if (isHalf) {
+    hours++;
     mins = 30 - mins;
     direction = !direction;
     mins = Math.abs(mins);
