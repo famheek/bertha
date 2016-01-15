@@ -12,10 +12,10 @@ bertha-notification md-input-container {
 
 bertha-notification .time-picker {
   margin-left: 10px;
+  width: 4em;
 }
 
 bertha-notification md-input-container md-icon {
   font-size: 24px !important;
   color: rgba(0, 0, 0, .54);
-
 }
