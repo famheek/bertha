@@ -1,0 +1,2 @@
+jspm bundle-sfx app/bootstrap public/bundle.js --minify
+firebase deploy

@@ -25,15 +25,15 @@ import '../style/welcome.css!';
 import '../style/dashboard.css!';
 import '../style/admin.css!';
 
-export default angular.module('App', [angularMaterial, 'ngRoute', angularFire])
-  .controller(AdminController.name, AdminController)
-  .controller(WelcomeController.name, WelcomeController)
-  .controller(DashboardController.name, DashboardController)
+export default angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
+  .controller('AdminController', AdminController)
+  .controller('WelcomeController', WelcomeController)
+  .controller('DashboardController', DashboardController)
 
-  .directive(DashboardDirective.name, DashboardDirective)
-  .directive(NotificationDirective.name, NotificationDirective)
+  .directive('berthaDashboard', DashboardDirective)
+  .directive('berthaNotification', NotificationDirective)
 
-  .config(function($mdDateLocaleProvider) {
+  .config(['$mdDateLocaleProvider', function($mdDateLocaleProvider) {
     // Example of a French localization.
     $mdDateLocaleProvider.months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
     $mdDateLocaleProvider.shortMonths = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'okt', 'nov', 'dec'];
@@ -58,22 +58,22 @@ export default angular.module('App', [angularMaterial, 'ngRoute', angularFire])
     };
     $mdDateLocaleProvider.msgCalendar = 'Calender';
     $mdDateLocaleProvider.msgOpenCalendar = 'Open calander';
-  })
+  }])
 
-  .config(function($routeProvider, $locationProvider) {
+  .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
       .when('/:id/dashboard', {
         template: dashboardTmpl,
-        controller: DashboardController.name
+        controller: 'DashboardController'
       })
       .when('/:id/admin', {
         template: adminTmpl,
-        controller: AdminController.name
+        controller: 'AdminController'
       })
       .otherwise({
         template: welcomeTmpl,
-        controller: WelcomeController.name
+        controller: 'WelcomeController'
       });
 
     $locationProvider.html5Mode(false);
-  });
+  }]);
