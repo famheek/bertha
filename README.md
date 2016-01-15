@@ -9,3 +9,10 @@ npm install -g firebase-tools jspm static-server
 jspm install
 static-server public
 ```
+
+
+# deploy
+
+```
+./deploy
+```
