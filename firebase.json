@@ -8,7 +8,7 @@
     "lib",
     "style",
     "templates",
-    "jspm_packages",
+    "jspm_packages/**/*.@(js|json|css)",
     "dev.html",
     "bundle.js.map"
   ]

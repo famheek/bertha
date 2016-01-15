@@ -2,6 +2,9 @@ import {authEmailUser, createEmailUser, authFacebookUser} from '../../lib/fireba
 import overviewController from '../dialogs/overviewDialog';
 import signUpController from '../dialogs/signUpDialog';
 
+import overviewDialogTmpl from '../dialogs/overviewDialog.html!';
+import signUpDialogTmpl from '../dialogs/signUpDialog.html!';
+
 export default class WelcomeController {
 
   constructor($scope, $location, $mdDialog) {
@@ -21,7 +24,7 @@ export default class WelcomeController {
   function showOverviewDialog() {
     $mdDialog.show({
       controller: overviewController,
-      templateUrl: 'app/dialogs/overviewDialog.html',
+      template: overviewDialogTmpl,
       parent: angular.element(document.body)
     });
   }
@@ -29,7 +32,7 @@ export default class WelcomeController {
   $scope.showSignUpDialog = function() {
     $mdDialog.show({
       controller: signUpController,
-      templateUrl: 'app/dialogs/signUpDialog.html',
+      template: signUpDialogTmpl,
       parent: angular.element(document.body)
     })
     .then(function(email) {
