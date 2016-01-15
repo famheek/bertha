@@ -9,7 +9,13 @@
     "style",
     "templates",
     "jspm_packages/**/*.@(js|json|css)",
-    "dev.html",
+    "index.html",
     "bundle.js.map"
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/prod.html"
+    }
   ]
 }
