@@ -2,7 +2,7 @@
 	text-align: left !important;
 }
 
-.share-icon-padding {
+.share-icon {
 	padding: 8px;
 }
 
@@ -10,7 +10,7 @@
   text-align: center;
 }
 
-.login-div-width {
+.login-div {
   min-width: 250px;
 }
 
@@ -20,4 +20,8 @@
 
 md-dialog-content {
 	padding: 16px;
+}
+
+.divider-text {
+	margin: 4px;
 }
