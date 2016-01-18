@@ -11,6 +11,7 @@ import AdminController from './controllers/admin';
 
 import DashboardDirective from './directives/dashboard';
 import NotificationDirective from './directives/notification';
+import ImportantMarkupDirective from './directives/important-markup';
 
 import dashboardTmpl from '../templates/dashboard.html!';
 import adminTmpl from '../templates/admin.html!';
@@ -32,6 +33,7 @@ export default angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
 
   .directive('berthaDashboard', DashboardDirective)
   .directive('berthaNotification', NotificationDirective)
+  .directive('importantMarkup', ImportantMarkupDirective)
 
   .config(['$mdDateLocaleProvider', function($mdDateLocaleProvider) {
     // Example of a French localization.
