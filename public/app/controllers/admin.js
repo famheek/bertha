@@ -1,9 +1,14 @@
 
-import {getDashboard} from '../../lib/firebase';
+import {getDashboard, getAuth} from '../../lib/firebase';
 
 export default class AdminController {
 
-  constructor($scope, $routeParams, $firebaseObject, $timeout, $q) {
+  constructor($scope, $routeParams, $firebaseObject, $timeout, $q, $location) {
+
+    if(!getAuth()) {
+      $location.path('/#');
+    }
+
     let dashboardId = $routeParams.id;
 
     $scope.loaded = false;
@@ -53,4 +58,4 @@ export default class AdminController {
 
 }
 
-AdminController.$inject = ['$scope', '$routeParams', '$firebaseObject', '$timeout', '$q'];
+AdminController.$inject = ['$scope', '$routeParams', '$firebaseObject', '$timeout', '$q', '$location'];

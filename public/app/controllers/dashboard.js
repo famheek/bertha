@@ -1,6 +1,13 @@
+import {getAuth} from '../../lib/firebase';
+
 export default class DashboardController {
 
-  constructor($scope, $timeout) {
+  constructor($scope, $timeout, $location) {
+
+  	if(!getAuth()) {
+      $location.path('/#');
+    }
+
     $scope.now = new Date();
 
     function updateDate() {
@@ -12,4 +19,4 @@ export default class DashboardController {
 
 }
 
-DashboardController.$inject = ['$scope', '$timeout'];
+DashboardController.$inject = ['$scope', '$timeout', '$location'];

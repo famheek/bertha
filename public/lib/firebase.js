@@ -50,3 +50,11 @@ export function authFacebookUser(functionOnComplete) {
 		}
 	});
 }
+
+export function getAuth() {
+	if(root.getAuth()) {
+		return true;
+	} else {
+		return false;
+	}
+}
