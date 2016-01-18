@@ -46,7 +46,7 @@ export default angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
       return m.isValid() ? m.toDate() : new Date(NaN);
     };
     $mdDateLocaleProvider.formatDate = function(date) {
-      return moment(date).format('L');
+      return moment(date).format('DD/MM/YYYY');
     };
     $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
       return $mdDateLocaleProvider.shortMonths[date.getMonth()] + ' ' + date.getFullYear();

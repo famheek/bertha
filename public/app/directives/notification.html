@@ -14,7 +14,6 @@
            <input name="time" ng-model="notification().time" placeholder="16:15"
                   required ng-pattern="/^[0-9]{2}:[0-9]{2}$/">
            <div ng-messages="notificationForm.time.$error" role="alert">
-             <div ng-message="required" class="my-message">Een tijd is verplicht</div>
              <div ng-message="pattern" class="my-message">Dit is geen valide tijd</div>
            </div>
         </md-input-container>
@@ -23,10 +22,10 @@
         <md-input-container class="md-block">
           <label>Herhalen</label>
           <md-select ng-model="notification().repeatMode">
-            <md-option value="0">Eenmalig</md-option>
-            <md-option value="1">Dagelijks</md-option>
-            <md-option value="2">Weekelijks</md-option>
-            <md-option value="3">Maandelijks</md-option>
+            <md-option value="never">Eenmalig</md-option>
+            <md-option value="daily">Dagelijks</md-option>
+            <md-option value="weekly">Weekelijks</md-option>
+            <md-option value="monthly">Maandelijks</md-option>
           </md-select>
         </md-input-container>
 

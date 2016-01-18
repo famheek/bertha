@@ -22,7 +22,7 @@ export default class AdminController {
     $scope.now = new Date();
 
     function updateDate() {
-      let now = new Date();
+      $scope.now = new Date();
       $timeout(updateDate, 1000 * 60 * 1); // every minute
     }
     updateDate();
