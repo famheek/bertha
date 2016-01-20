@@ -18,13 +18,13 @@ export default function berthaNotification() {
       scope.mouseIn = false;
 
       scope.$watchCollection('[date, time]', function([date,time]) {
-        let [, hours, minutes] = /^([0-9]{2}):([0-9]{2})$/.exec(time).map((str) => parseInt(str));
-
-        let dateWithTime = new Date(date);
-        dateWithTime.setHours(hours);
-        dateWithTime.setMinutes(minutes);
-        console.log(dateWithTime.getTime())
-        scope.notification().timestamp = dateWithTime.getTime();
+        if (date && time) {
+          let [, hours, minutes] = /^([0-9]{2}):([0-9]{2})$/.exec(time).map((str) => parseInt(str));
+          let dateWithTime = new Date(date);
+          dateWithTime.setHours(hours);
+          dateWithTime.setMinutes(minutes);
+          scope.notification().timestamp = dateWithTime.getTime();
+        }
       });
 
       scope.$watch('notification()', function(notification) {

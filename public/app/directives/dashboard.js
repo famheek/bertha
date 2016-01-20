@@ -4,6 +4,7 @@ const days = ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag'
 const months = ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'];
 
 function getTime(date) {
+  [1,2,3].map((value, key) => value ** 2);
   let mins = Math.round(date.getMinutes() / 5) * 5;
   let direction = mins < 30;
   let hours = date.getHours() % 12;
@@ -65,7 +66,6 @@ export default function berthaDashboard() {
       options: '&'
     },
     link: function(scope, element, attrs) {
-
       scope.$watch('date()', function(date) {
         if (!date) return;
         let dayOfWeek = days[date.getDay()];
@@ -75,9 +75,8 @@ export default function berthaDashboard() {
         let time = getTime(date).join(' ');
         let daypart = getDaypart(date.getHours());
         scope.todayText = ['vandaag is het', dayOfWeek.toUpperCase(), dayOfMonth, month, year].join(' ');
-        scope.nowText = ['het is nu', time.toUpperCase() + '!', 'in de', daypart.toUpperCase()].join(' ');
+        scope.nowText = ['het is nu', time.toUpperCase(), 'in de', daypart.toUpperCase()].join(' ');
       });
-
     }
   }
 }

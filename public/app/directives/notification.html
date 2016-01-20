@@ -13,7 +13,7 @@
            <md-icon md-font-icon="fa-clock-o" class="fa" ></md-icon>
            <input name="time" ng-model="time" placeholder="16:15"
                   required ng-pattern="/^[0-9]{2}:[0-9]{2}$/">
-           <div ng-messages="notificationForm.time.$error" role="alert">
+           <div ng-messages="notificationForm.time.$error" role="alert" multiple>
              <div ng-message="pattern" class="my-message">Dit is geen valide tijd</div>
            </div>
         </md-input-container>
