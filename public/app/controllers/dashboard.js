@@ -1,8 +1,10 @@
-import {getAuth} from '../../lib/firebase';
+import {getAuth, getDashboard} from '../../lib/firebase';
 
 export default class DashboardController {
 
-  constructor($scope, $timeout, $location, $firebaseObject) {
+  constructor($scope, $timeout, $location, $routeParams, $q, $firebaseObject) {
+
+    let dashboardId = $routeParams.id;
 
   	if(!getAuth()) {
       $location.path('/#');
@@ -30,4 +32,4 @@ export default class DashboardController {
 
 }
 
-DashboardController.$inject = ['$scope', '$timeout', '$location', '$firebaseObject'];
+DashboardController.$inject = ['$scope', '$timeout', '$location', '$routeParams', '$q', '$firebaseObject'];

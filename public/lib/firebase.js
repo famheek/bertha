@@ -10,6 +10,9 @@ export function addDashboard() {
 }
 
 export function findOwnedDashboards() {
+	if (root.getAuth() == null) {
+		throw new Error('Not authenticated');
+	}
 	return findDashboardsByOwner(root.getAuth().uid);
 }
 
