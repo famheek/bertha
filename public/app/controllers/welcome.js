@@ -29,7 +29,7 @@ export default class WelcomeController {
     }
 
     $scope.authFacebookUser = function() {
-      authFacebookUser(openAdmin());
+      authFacebookUser(openAdmin);
     }
 
     $scope.authEmailUser = function(email, password) {
