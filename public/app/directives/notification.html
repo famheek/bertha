@@ -7,11 +7,11 @@
       </md-input-container>
 
       <div layout="row">
-        <md-datepicker ng-model="notification().date" md-placeholder="Kies datum"></md-datepicker>
+        <md-datepicker ng-model="date" md-placeholder="Kies datum"></md-datepicker>
         <md-input-container class="md-block md-icon-float time-picker">
            <label></label>
            <md-icon md-font-icon="fa-clock-o" class="fa" ></md-icon>
-           <input name="time" ng-model="notification().time" placeholder="16:15"
+           <input name="time" ng-model="time" placeholder="16:15"
                   required ng-pattern="/^[0-9]{2}:[0-9]{2}$/">
            <div ng-messages="notificationForm.time.$error" role="alert">
              <div ng-message="pattern" class="my-message">Dit is geen valide tijd</div>
@@ -37,7 +37,6 @@
             <md-option value="2h">2 uur van tevoren</md-option>
             <md-option value="4h">4 uur van tevoren</md-option>
             <md-option value="8h">8 uur van tevoren</md-option>
-            <md-option value="day">{{notifcation().date}}</md-option>
           </md-select>
         </md-input-container>
       </div>

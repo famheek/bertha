@@ -35,8 +35,9 @@ export default class AdminController {
     function newDraft() {
       return {
         description: '',
-        repeatMode: 0,
-        showMode: '2h'
+        repeatMode: 'never',
+        showMode: '2h',
+        timestamp: Date.now()
       };
     }
 

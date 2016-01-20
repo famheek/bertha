@@ -17,6 +17,24 @@ export default function berthaNotification() {
       scope.clickExpanded = false;
       scope.mouseIn = false;
 
+      scope.$watchCollection('[date, time]', function([date,time]) {
+        let [, hours, minutes] = /^([0-9]{2}):([0-9]{2})$/.exec(time).map((str) => parseInt(str));
+
+        let dateWithTime = new Date(date);
+        dateWithTime.setHours(hours);
+        dateWithTime.setMinutes(minutes);
+        console.log(dateWithTime.getTime())
+        scope.notification().timestamp = dateWithTime.getTime();
+      });
+
+      scope.$watch('notification()', function(notification) {
+        if (notification) {
+          let date = new Date(notification.timestamp);
+          scope.date = date;
+          scope.time = date.getHours() + ':' + date.getMinutes();
+        }
+      });
+
       scope.$watch('forceExpand() || mouseIn || clickExpanded', function(expanded) {
         scope.expanded = expanded;
       });

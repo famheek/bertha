@@ -17,8 +17,10 @@ import dashboardTmpl from '../templates/dashboard.html!';
 import adminTmpl from '../templates/admin.html!';
 import welcomeTmpl from '../templates/welcome.html!';
 
-import 'font-awesome/css/font-awesome.min.css!';
+import ScheduledNotificationsFilter from './filters/scheduled-notifications';
+import ActiveNotificationsFilter from './filters/active-notifications';
 
+import 'font-awesome/css/font-awesome.min.css!';
 import 'angular-material/angular-material.css!';
 
 import '../style/app.css!';
@@ -34,6 +36,9 @@ export default angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
   .directive('berthaDashboard', DashboardDirective)
   .directive('berthaNotification', NotificationDirective)
   .directive('importantMarkup', ImportantMarkupDirective)
+
+  .filter('activeNotifications', ActiveNotificationsFilter)
+  .filter('scheduledNotifications', ScheduledNotificationsFilter)
 
   .config(['$mdDateLocaleProvider', function($mdDateLocaleProvider) {
     // Example of a French localization.

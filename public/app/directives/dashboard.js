@@ -68,13 +68,15 @@ export default function berthaDashboard() {
 
       scope.$watch('date()', function(date) {
         if (!date) return;
-        scope.dayOfWeek = days[date.getDay()];
-        scope.dayOfMonth = date.getDate();
-        scope.month = months[date.getMonth()];
-        scope.year = date.getFullYear();
-        [scope.minutes, scope.minutesDirection, scope.hours] = getTime(date);
-        scope.daypart = getDaypart(date.getHours());
-      })
+        let dayOfWeek = days[date.getDay()];
+        let dayOfMonth = date.getDate();
+        let month = months[date.getMonth()];
+        let year = date.getFullYear();
+        let time = getTime(date).join(' ');
+        let daypart = getDaypart(date.getHours());
+        scope.todayText = ['vandaag is het', dayOfWeek.toUpperCase(), dayOfMonth, month, year].join(' ');
+        scope.nowText = ['het is nu', time.toUpperCase() + '!', 'in de', daypart.toUpperCase()].join(' ');
+      });
 
     }
   }

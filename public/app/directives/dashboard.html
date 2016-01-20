@@ -1,4 +1,4 @@
-<p class="today">
+<p class="today" important-markup="todayText">
   <span class="today-prefix">Vandaag is het</span>
   <span class="day-of-week important">{{dayOfWeek}}</span>
   <span class="day-of-month">{{dayOfMonth}}</span>
@@ -6,7 +6,7 @@
   <span class="year">{{year}}</span>
 </p>
 
-<p class="now">
+<p class="now" important-markup="nowText">
   <span>Het is nu</span>
   <span class="time important">
     <span class="minutes">{{minutes}}</span>
@@ -19,8 +19,8 @@
 
 <img src="../icons/seperator.svg"></img>
 
-<p class="soon">
-
- <span important-markup="'test TEST'"></span>
-
+<p
+  ng-repeat="notification in dashboard.notifications | activeNotifications"
+  class="soon"
+  important-markup="notification.description">
 </p>
