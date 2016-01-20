@@ -20,7 +20,11 @@ bertha-dashboard {
   text-align: center;
 }
 
-bertha-dashboard p span {
+bertha-dashboard > p {
+  margin: 50px;
+}
+
+bertha-dashboard > p span {
   vertical-align: middle;
   text-transform: uppercase;
 }
