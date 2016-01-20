@@ -1,7 +1,6 @@
 import {authEmailUser, createEmailUser, authFacebookUser, getAuth, findOwnedDashboards, addDashboard} from '../../lib/firebase';
 import signUpController from '../dialogs/signUpDialog';
 
-import overviewDialogTmpl from '../dialogs/overviewDialog.html!';
 import signUpDialogTmpl from '../dialogs/signUpDialog.html!';
 
 export default class WelcomeController {
