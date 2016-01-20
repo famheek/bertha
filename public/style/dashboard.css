@@ -14,14 +14,13 @@ bertha-dashboard {
 bertha-dashboard.dark-theme {
   background-color: #000;
   color: #fff;
-
 }
 
 bertha-dashboard {
   text-align: center;
 }
 
-bertha-dashboard .today span, bertha-dashboard .now > span {
+bertha-dashboard p span {
   vertical-align: middle;
   text-transform: uppercase;
 }
