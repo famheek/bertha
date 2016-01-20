@@ -5,8 +5,8 @@ const root = new Firebase(firebaseEndpoint);
 const dashboards = root.child('dashboards');
 const users = root.child('users');
 
-export function addDashboard() {
-	return dashboards.push().set({owner: root.getAuth().uid});
+export function addDashboard(onComplete) {
+	return dashboards.push().set({owner: root.getAuth().uid}, onComplete());
 }
 
 export function findOwnedDashboards() {
