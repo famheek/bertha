@@ -20,10 +20,7 @@ export default class WelcomeController {
             $location.path(dashboardId + '/admin');
           });
         } else {
-          addDashboard();
-          findOwnedDashboards().on("child_added", function(snapshot) {
-            openAdmin();
-          });
+          addDashboard(openAdmin);
         }
     	});
     }

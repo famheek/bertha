@@ -6,10 +6,6 @@ export default class DashboardController {
 
     let dashboardId = $routeParams.id;
 
-  	if(!getAuth()) {
-      $location.path('/#');
-    }
-
     $scope.now = new Date();
 
     function updateDate() {
