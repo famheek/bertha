@@ -1,6 +1,8 @@
 import notificationTmpl from './notification.html!';
 import '../../style/notification.css!';
 
+import moment from 'moment';
+
 export default function berthaNotification() {
   return {
     template: notificationTmpl,
@@ -19,10 +21,11 @@ export default function berthaNotification() {
 
       scope.$watchCollection('[date, time]', function([date,time]) {
         if (date && time) {
-          let [, hours, minutes] = /^([0-9]{2}):([0-9]{2})$/.exec(time).map((str) => parseInt(str));
+          let [, hours, minutes] = (/^([0-9]{2}):([0-9]{2})$/.exec(time) || []).map((str) => parseInt(str));
           let dateWithTime = new Date(date);
           dateWithTime.setHours(hours);
           dateWithTime.setMinutes(minutes);
+          console.log(dateWithTime.toLocaleString());
           scope.notification().timestamp = dateWithTime.getTime();
         }
       });
@@ -31,7 +34,7 @@ export default function berthaNotification() {
         if (notification) {
           let date = new Date(notification.timestamp);
           scope.date = date;
-          scope.time = date.getHours() + ':' + date.getMinutes();
+          scope.time = moment(date).format('HH:mm');
         }
       });
 

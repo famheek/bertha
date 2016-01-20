@@ -1,7 +1,9 @@
 import angular from 'angular';
 import angularMaterial from 'angular-material';
 import angularRoute from 'angular-route';
+import angularMessages from 'angular-messages';
 import angularFire from 'angularfire';
+
 
 import moment from 'moment';
 
@@ -28,7 +30,7 @@ import '../style/welcome.css!';
 import '../style/dashboard.css!';
 import '../style/admin.css!';
 
-export default angular.module('App', ['ngMaterial', 'ngRoute', 'firebase'])
+export default angular.module('App', ['ngMaterial', 'ngRoute', 'ngMessages', 'firebase'])
   .controller('AdminController', AdminController)
   .controller('WelcomeController', WelcomeController)
   .controller('DashboardController', DashboardController)

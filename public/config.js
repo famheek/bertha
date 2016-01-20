@@ -16,6 +16,7 @@ System.config({
   map: {
     "angular": "github:angular/bower-angular@1.4.8",
     "angular-material": "github:angular/bower-material@1.0.1",
+    "angular-messages": "github:angular/bower-angular-messages@1.4.8",
     "angular-route": "github:angular/bower-angular-route@1.4.8",
     "angularfire": "github:firebase/angularfire@1.1.3",
     "babel": "npm:babel-core@5.8.34",

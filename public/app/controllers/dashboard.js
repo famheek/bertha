@@ -15,6 +15,17 @@ export default class DashboardController {
       $timeout(updateDate, 1000 * 60 * 1); // every minute
     }
     updateDate();
+
+
+    $scope.loaded = false;
+    let promises = [];
+
+    let dashboardPromise = $firebaseObject(getDashboard(dashboardId)).$bindTo($scope, 'dashboard');
+    promises.push(dashboardPromise);
+
+    $q.all(promises).then(function() {
+      $scope.loaded = true;
+    });
   }
 
 }

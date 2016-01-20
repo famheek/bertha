@@ -62,7 +62,7 @@ export default function berthaDashboard() {
     template: dashboardTmpl,
     scope: {
       date: '&',
-      notifications: '=',
+      dashboard: '&',
       options: '&'
     },
     link: function(scope, element, attrs) {
@@ -74,7 +74,8 @@ export default function berthaDashboard() {
         let year = date.getFullYear();
         let time = getTime(date).join(' ');
         let daypart = getDaypart(date.getHours());
-        scope.todayText = ['vandaag is het', dayOfWeek.toUpperCase(), dayOfMonth, month, year].join(' ');
+        [scope.year, scope.month, scope.dayOfMonth, scope.dayOfWeek] = [year, month, dayOfMonth, dayOfWeek];
+        // scope.todayText = ['vandaag is het', dayOfWeek.toUpperCase(), dayOfMonth, month, year].join(' ');
         scope.nowText = ['het is nu', time.toUpperCase(), 'in de', daypart.toUpperCase()].join(' ');
       });
     }

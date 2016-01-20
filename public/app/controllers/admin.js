@@ -36,7 +36,7 @@ export default class AdminController {
       return {
         description: '',
         repeatMode: 'never',
-        showMode: '2h',
+        timeInAdvance: '2h',
         timestamp: Date.now()
       };
     }
