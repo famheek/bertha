@@ -10,7 +10,7 @@ function nextTime(originTime, repeatMode) {
       date.setDate(date.getDate() + 1);
       break;
     case "weekly":
-      date.setDayOfWeek(date.getDate() + 7);
+      date.setDate(date.getDate() + 7);
       break;
     case "montly":
       date.setMonth(date.getMonth() + 1);
@@ -22,10 +22,11 @@ function nextTime(originTime, repeatMode) {
 }
 
 function firstFutureTime(originTime, repeatMode) {
+  return originTime;
   let futureTime = originTime;
   if (repeatMode !== 'never') {
     while (futureTime < Date.now()) {
-      futureTime = nextTime(originTime, repeatMode);
+      futureTime = nextTime(futureTime, repeatMode);
     }
   }
   return futureTime;

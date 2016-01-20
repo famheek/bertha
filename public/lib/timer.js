@@ -3,6 +3,7 @@ export function schedule(date) {
     date = date.getTime();
   }
   return new Promise(function(resolve, reject) {
+    console.log(date - Date.now());
     setTimeout(resolve, date - Date.now());
   });
 }

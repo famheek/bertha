@@ -1,15 +1,16 @@
 import dashboardTmpl from './dashboard.html!';
 
+import {speak} from '../../lib/speech';
+
 const days = ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'];
 const months = ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'];
 
 function getTime(date) {
-  [1,2,3].map((value, key) => value ** 2);
   let mins = Math.round(date.getMinutes() / 5) * 5;
   let direction = mins < 30;
   let hours = date.getHours() % 12;
   if (mins === 60) {
-    hours += 1;
+    hours = (hours + 1) % 12;
   }
   mins = direction ? mins : 60 - mins;
 
@@ -21,6 +22,10 @@ function getTime(date) {
     mins = Math.abs(mins);
   } else if (!direction) {
     hours++;
+  }
+
+  if (hours === 0) {
+    hours = 12;
   }
 
   if (mins === 15) {
@@ -52,7 +57,7 @@ const dayparts = {
 
 function getDaypart(hour) {
   if (dayparts[hour] === undefined) {
-    return getDaypart((hour - 1) % 24);
+    return getDaypart((hour + 23) % 24);
   }
   return dayparts[hour];
 };
@@ -76,7 +81,11 @@ export default function berthaDashboard() {
         let daypart = getDaypart(date.getHours());
         [scope.year, scope.month, scope.dayOfMonth, scope.dayOfWeek] = [year, month, dayOfMonth, dayOfWeek];
         // scope.todayText = ['vandaag is het', dayOfWeek.toUpperCase(), dayOfMonth, month, year].join(' ');
-        scope.nowText = ['het is nu', time.toUpperCase(), 'in de', daypart.toUpperCase()].join(' ');
+        let nowText = ['het is nu', time.toUpperCase(), 'in de', daypart.toUpperCase()].join(' ');
+        if (scope.nowText !== nowText) {
+          speak(nowText);
+        }
+        scope.nowText = nowText;
       });
     }
   }
