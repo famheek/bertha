@@ -11,6 +11,8 @@ export default class AdminController {
 
     let dashboardId = $routeParams.id;
 
+    $scope.dashboardUrl = location.href.replace('admin', 'dashboard');
+
     $scope.loaded = false;
     let promises = [];
 

@@ -5,6 +5,9 @@
   <md-content class="admin-sidebar" flex>
     <md-card>
 
+        <md-subheader class="md-primary">Dashboard link</md-subheader>
+        <pre>{{dashboardUrl}}</pre>
+
         <md-subheader class="md-primary">Actieve afspraken</md-subheader>
 
         <div ng-repeat="notification in dashboard.notifications | scheduledNotifications">
