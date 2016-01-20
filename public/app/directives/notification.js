@@ -25,7 +25,6 @@ export default function berthaNotification() {
           let dateWithTime = new Date(date);
           dateWithTime.setHours(hours);
           dateWithTime.setMinutes(minutes);
-          console.log(dateWithTime.toLocaleString());
           scope.notification().timestamp = dateWithTime.getTime();
         }
       });
