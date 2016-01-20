@@ -1,5 +1,4 @@
-import {authEmailUser, createEmailUser, authFacebookUser} from '../../lib/firebase';
-import overviewController from '../dialogs/overviewDialog';
+import {authEmailUser, createEmailUser, authFacebookUser, getAuth, findOwnedDashboards, addDashboard} from '../../lib/firebase';
 import signUpController from '../dialogs/signUpDialog';
 
 import overviewDialogTmpl from '../dialogs/overviewDialog.html!';
@@ -9,25 +8,38 @@ export default class WelcomeController {
 
   constructor($scope, $location, $mdDialog) {
 
+    if(getAuth()) {
+      openAdmin();
+    }
+
+    function openAdmin() {
+      findOwnedDashboards().once("value", function(snapshot) {
+        if(snapshot.val()) {
+          let dashboardIds = Object.keys(snapshot.val());
+          let dashboardId = dashboardIds[0];
+          $scope.$apply(function() {
+            $location.path(dashboardId + '/admin');
+          });
+        } else {
+          addDashboard();
+          findOwnedDashboards().on("child_added", function(snapshot) {
+            openAdmin();
+          });
+        }
+    	});
+    }
+
     $scope.authFacebookUser = function() {
-      authFacebookUser(showOverviewDialog);
+      authFacebookUser(openAdmin());
     }
 
     $scope.authEmailUser = function(email, password) {
       authEmailUser(email, password, function(error) {
         if(!error) {
-          showOverviewDialog();
+          openAdmin();
         }
       });
     }
-
-  function showOverviewDialog() {
-    $mdDialog.show({
-      controller: overviewController,
-      template: overviewDialogTmpl,
-      parent: angular.element(document.body)
-    });
-  }
 
   $scope.showSignUpDialog = function() {
     $mdDialog.show({
