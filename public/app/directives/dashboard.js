@@ -6,12 +6,10 @@ const days = ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag'
 const months = ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'];
 
 function getTime(date) {
+
   let mins = Math.round(date.getMinutes() / 5) * 5;
-  let direction = mins < 30;
   let hours = date.getHours() % 12;
-  if (mins === 60) {
-    hours = (hours + 1) % 12;
-  }
+  let direction = mins < 30;
   mins = direction ? mins : 60 - mins;
 
   let isHalf = mins > 15;
