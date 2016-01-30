@@ -60,6 +60,20 @@ function getDaypart(hour) {
   return dayparts[hour];
 };
 
+function textToSpeech(time, mode, text) {
+  let half = (time[2].toString().substr(0, 4) === "half" && !time[2]) ? true : false;
+  let quarter = (time[0] === "kwart") ? true : false;
+  if(mode === "5m") {
+    speak(text);
+  } else if(mode === "15m" && (half || quarter)) {
+    speak(text);
+  } else if(mode === "30m" && half) {
+    speak(text);
+  } else if(!time[0]) {
+    speak(text);
+  }
+}
+
 export default function berthaDashboard() {
   return {
     template: dashboardTmpl,
@@ -80,8 +94,8 @@ export default function berthaDashboard() {
         [scope.year, scope.month, scope.dayOfMonth, scope.dayOfWeek] = [year, month, dayOfMonth, dayOfWeek];
         // scope.todayText = ['vandaag is het', dayOfWeek.toUpperCase(), dayOfMonth, month, year].join(' ');
         let nowText = ['het is nu', time.toUpperCase(), 'in de', daypart.toUpperCase()].join(' ');
-        if (scope.nowText !== nowText) {
-          speak(nowText);
+        if(scope.dashboard().settings.textToSpeech.enabled && scope.nowText !== nowText) {
+          textToSpeech(getTime(date), scope.dashboard().settings.textToSpeech.repeatMode, nowText);
         }
         scope.nowText = nowText;
       });
