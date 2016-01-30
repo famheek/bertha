@@ -26,18 +26,20 @@
         </bertha-notification>
 
         <md-subheader class="md-primary">Instellingen</md-subheader>
-        <md-checkbox ng-model="dashboard.settings.textToSpeech.enabled">praatfunctie</md-checkbox>
-        <div ng-if="dashboard.settings.textToSpeech.enabled">
+        <md-content layout-padding>
+         <md-checkbox ng-model="dashboard.settings.textToSpeech.enabled" class="checkbox">Praatfunctie</md-checkbox>
+         <div ng-if="dashboard.settings.textToSpeech.enabled">
           <md-input-container>
-            <label>Herhalen</label>
-            <md-select ng-model="dashboard.settings.textToSpeech.repeatMode">
-              <md-option value="1h">Ieder uur</md-option>
-              <md-option value="30m">Ieder half uur</md-option>
-              <md-option value="15m">Ieder kwartier</md-option>
-              <md-option value="5m">Iedere 5 minuten</md-option>
-            </md-select>
+           <label>Herhalen</label>
+           <md-select ng-model="dashboard.settings.textToSpeech.repeatMode">
+            <md-option value="1h">Ieder uur</md-option>
+            <md-option value="30m">Ieder half uur</md-option>
+            <md-option value="15m">Ieder kwartier</md-option>
+            <md-option value="5m">Iedere 5 minuten</md-option>
+           </md-select>
           </md-input-container>
-        </div>
+         </div>
+        </md-content>
 
     </md-card>
   </md-content>
