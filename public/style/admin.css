@@ -1,5 +1,7 @@
-.admin-sidebar {
-  min-width: 400px;
+@media screen and (min-width: 400px) {
+  .admin-sidebar {
+    min-width: 400px;
+  }
 }
 
 md-content md-checkbox.checkbox {
