@@ -74,7 +74,7 @@ function textToSpeech(time, mode, text) {
   }
 }
 
-export default function berthaDashboard() {
+export default function berthaDashboard($filter) {
   return {
     template: dashboardTmpl,
     scope: {
@@ -95,7 +95,12 @@ export default function berthaDashboard() {
         // scope.todayText = ['vandaag is het', dayOfWeek.toUpperCase(), dayOfMonth, month, year].join(' ');
         let nowText = ['het is nu', time.toUpperCase(), 'in de', daypart.toUpperCase()].join(' ');
         if(scope.dashboard().settings.textToSpeech.enabled && scope.nowText !== nowText) {
-          textToSpeech(getTime(date), scope.dashboard().settings.textToSpeech.repeatMode, nowText);
+          let notifications = $filter('activeNotifications')(scope.dashboard().notifications);
+          let notificationsText = '';
+          for (var i = 0; i < notifications.length; i++) {
+            notificationsText += ' ' + notifications[i].description;
+          }
+          textToSpeech(getTime(date), scope.dashboard().settings.textToSpeech.repeatMode, nowText + notificationsText);
         }
         scope.nowText = nowText;
       });
@@ -103,4 +108,4 @@ export default function berthaDashboard() {
   }
 }
 
-berthaDashboard.$inject = []
+berthaDashboard.$inject = ['$filter']
