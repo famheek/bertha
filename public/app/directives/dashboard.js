@@ -61,7 +61,7 @@ function getDaypart(hour) {
 };
 
 function textToSpeech(time, mode, text) {
-  let half = (time[2].toString().substr(0, 4) === "half" && !time[2]) ? true : false;
+  let half = (time[2].toString().substr(0, 4) === "half" && !time[2]);
   let quarter = (time[0] === "kwart") ? true : false;
   if(mode === "5m") {
     speak(text);
@@ -103,6 +103,14 @@ export default function berthaDashboard($filter) {
           textToSpeech(getTime(date), scope.dashboard().settings.textToSpeech.repeatMode, nowText + notificationsText);
         }
         scope.nowText = nowText;
+      });
+
+      scope.$watchCollection('dashboard().notifications | scheduledNotifications', function(newValues, oldValues) {
+        var newSet = new Set(newValues);
+        oldValues.forEach((old) => newSet.delete(old));
+        for (let newVal of newSet) {
+          speak(newVal.description);
+        }
       });
     }
   }
