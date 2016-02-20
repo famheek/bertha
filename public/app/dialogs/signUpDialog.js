@@ -10,7 +10,9 @@ export default function overviewController($scope, $mdDialog) {
 		$scope.errorMessage = false;
 		createEmailUser(email, password, function(error) {
 			if(error) {
-				$scope.errorMessage = true;
+				$scope.$apply(function() {
+					$scope.errorMessage = true;
+				});
 			} else {
 				$mdDialog.hide(email);
 			}

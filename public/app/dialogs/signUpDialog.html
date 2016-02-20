@@ -25,7 +25,9 @@
     <label>Herhaal wachtwoord</label>
     <input type="password" ng-model="passwordTwo">
     <div flex>
-     <span ng-message="required" ng-show="passwordOne && passwordTwo && (passwordOne != passwordTwo)">Wachtwoorden komen niet overeen</span>
+     <div ng-messages>
+       <span ng-message="required" ng-show="passwordOne && passwordTwo && (passwordOne != passwordTwo)">Wachtwoorden komen niet overeen</span>
+     </div>
     </div>
    </md-input-container>
 
