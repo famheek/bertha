@@ -83,6 +83,7 @@ export default function berthaDashboard($filter) {
       options: '&'
     },
     link: function(scope, element, attrs) {
+
       scope.$watchCollection('[dashboard(), date()]', function([dashboard, date]) {
         if (!date) return;
         if (!dashboard) return;
