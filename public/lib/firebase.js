@@ -6,7 +6,14 @@ const dashboards = root.child('dashboards');
 const users = root.child('users');
 
 export function addDashboard(onComplete) {
-	return dashboards.push().set({owner: root.getAuth().uid}, onComplete());
+	return dashboards.push().set({
+		owner: root.getAuth().uid,
+		settings: {
+			textToSpeech: {
+				enabled: false,
+				repeatMode: '1h'
+			}
+		}}, onComplete());
 }
 
 export function findOwnedDashboards() {
