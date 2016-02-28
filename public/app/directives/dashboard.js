@@ -83,6 +83,7 @@ export default function berthaDashboard($filter) {
       options: '&'
     },
     link: function(scope, element, attrs) {
+
       scope.$watch('date()', function(date) {
         if (!date) return;
         let dayOfWeek = days[date.getDay()];
@@ -105,13 +106,6 @@ export default function berthaDashboard($filter) {
         scope.nowText = nowText;
       });
 
-      scope.$watchCollection('dashboard().notifications | scheduledNotifications', function(newValues, oldValues) {
-        var newSet = new Set(newValues);
-        oldValues.forEach((old) => newSet.delete(old));
-        for (let newVal of newSet) {
-          speak(newVal.description);
-        }
-      });
     }
   }
 }
