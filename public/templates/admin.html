@@ -10,7 +10,7 @@
 
         <md-subheader class="md-primary">Actieve afspraken</md-subheader>
 
-        <div ng-repeat="notification in dashboard.notifications | scheduledNotifications">
+        <div ng-repeat="notification in dashboard.notifications | scheduledNotifications | orderBy:'timestamp'">
           <bertha-notification
             notification="notification"
             removable="true"
