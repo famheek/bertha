@@ -10,8 +10,14 @@ export function addDashboard(onComplete) {
 		owner: root.getAuth().uid,
 		settings: {
 			textToSpeech: {
-				enabled: false,
-				repeatMode: '1h'
+				time: {
+					enabled: false,
+					repeatMode: '1h'
+				},
+				notifications: {
+					enabled: false,
+					repeatMode: '1h'
+				}
 			}
 		}}, onComplete());
 }

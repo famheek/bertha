@@ -26,11 +26,23 @@
 
         <md-subheader class="md-primary">Instellingen</md-subheader>
         <md-content layout-padding>
-         <md-checkbox ng-model="dashboard.settings.textToSpeech.enabled" class="checkbox">Praatfunctie</md-checkbox>
-         <div ng-if="dashboard.settings.textToSpeech.enabled">
+         <md-checkbox ng-model="dashboard.settings.textToSpeech.time.enabled" class="checkbox">Praatfunctie (tijd)</md-checkbox>
+         <div ng-if="dashboard.settings.textToSpeech.time.enabled">
           <md-input-container>
-           <label>Herhalen</label>
-           <md-select ng-model="dashboard.settings.textToSpeech.repeatMode">
+           <label>Herhaal</label>
+           <md-select ng-model="dashboard.settings.textToSpeech.time.repeatMode">
+            <md-option value="1h">Ieder uur</md-option>
+            <md-option value="30m">Ieder half uur</md-option>
+            <md-option value="15m">Ieder kwartier</md-option>
+            <md-option value="5m">Iedere 5 minuten</md-option>
+           </md-select>
+          </md-input-container>
+         </div>
+         <md-checkbox ng-model="dashboard.settings.textToSpeech.notifications.enabled" class="checkbox">Praatfunctie (afspaken)</md-checkbox>
+         <div ng-if="dashboard.settings.textToSpeech.notifications.enabled">
+          <md-input-container>
+           <label>Herhaal</label>
+           <md-select ng-model="dashboard.settings.textToSpeech.notifications.repeatMode">
             <md-option value="1h">Ieder uur</md-option>
             <md-option value="30m">Ieder half uur</md-option>
             <md-option value="15m">Ieder kwartier</md-option>

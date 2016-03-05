@@ -60,17 +60,17 @@ function getDaypart(hour) {
   return dayparts[hour];
 };
 
-function textToSpeech(time, mode, text) {
+function checkMode(time, mode, text) {
   let half = (time[2].toString().substr(0, 4) === "half" && !time[2]);
   let quarter = (time[0] === "kwart") ? true : false;
   if(mode === "5m") {
-    speak(text);
+    return true;
   } else if(mode === "15m" && (half || quarter)) {
-    speak(text);
+    return true;
   } else if(mode === "30m" && half) {
-    speak(text);
+    return true;
   } else if(!time[0]) {
-    speak(text);
+    return true;
   }
 }
 
@@ -96,14 +96,16 @@ export default function berthaDashboard($filter) {
         [scope.year, scope.month, scope.dayOfMonth, scope.dayOfWeek] = [year, month, dayOfMonth, dayOfWeek];
         // scope.todayText = ['vandaag is het', dayOfWeek.toUpperCase(), dayOfMonth, month, year].join(' ');
         let nowText = ['het is nu', time.toUpperCase(), 'in de', daypart.toUpperCase()].join(' ');
-        if(scope.dashboard().settings.textToSpeech.enabled && scope.nowText !== nowText) {
-          let notifications = $filter('activeNotifications')(scope.dashboard().notifications);
-          let notificationsText = '';
-          for (var i = 0; i < notifications.length; i++) {
-            notificationsText += ' ' + notifications[i].description;
-          }
-          textToSpeech(getTime(date), scope.dashboard().settings.textToSpeech.repeatMode, nowText + notificationsText);
+        let tts = scope.dashboard().settings.textToSpeech;
+        let text = "";
+        if(scope.nowText !== nowText && tts.time.enabled && checkMode(getTime(date), tts.time.repeatMode)) {
+          text += nowText;
         }
+        if(scope.nowText !== nowText && tts.notifications.enabled && checkMode(getTime(date), tts.notifications.repeatMode)) {
+          let notifications = $filter('activeNotifications')(scope.dashboard().notifications);
+          notifications.map((notificationText) => {text += ', ' + notificationText.description});
+        }
+        if(text) {speak(text)}
         scope.nowText = nowText;
       });
 
