@@ -22,7 +22,7 @@ function nextTime(originTime, repeatMode) {
 }
 
 function firstFutureTime(originTime, repeatMode) {
-  return originTime;
+  //return originTime;
   let futureTime = originTime;
   if (repeatMode !== 'never') {
     while (futureTime < Date.now()) {
