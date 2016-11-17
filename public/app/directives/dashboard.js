@@ -1,5 +1,5 @@
 import dashboardTmpl from './dashboard.html!';
-
+import ttm from './time-till-moment';
 import {speak} from '../../lib/speech';
 
 const days = ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'];
@@ -103,6 +103,8 @@ export default function berthaDashboard($filter) {
         }
         if(scope.nowText !== nowText && tts.notifications.enabled && checkMode(getTime(date), tts.notifications.repeatMode)) {
           let notifications = $filter('activeNotifications')(scope.dashboard().notifications);
+          notifications.map((n) => console.log(n));
+          console.log(ttm);
           notifications.map((notificationText) => {text += ', ' + notificationText.description});
         }
         if(text) {speak(text)}

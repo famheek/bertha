@@ -14,6 +14,7 @@ import AdminController from './controllers/admin';
 import DashboardDirective from './directives/dashboard';
 import NotificationDirective from './directives/notification';
 import ImportantMarkupDirective from './directives/important-markup';
+import TimeTillMomentDirective from './directives/time-till-moment';
 
 import dashboardTmpl from '../templates/dashboard.html!';
 import adminTmpl from '../templates/admin.html!';
@@ -38,6 +39,7 @@ export default angular.module('App', ['ngMaterial', 'ngRoute', 'ngMessages', 'fi
   .directive('berthaDashboard', DashboardDirective)
   .directive('berthaNotification', NotificationDirective)
   .directive('importantMarkup', ImportantMarkupDirective)
+  .directive('timeTillMoment', TimeTillMomentDirective)
 
   .filter('activeNotifications', ActiveNotificationsFilter)
   .filter('scheduledNotifications', ScheduledNotificationsFilter)

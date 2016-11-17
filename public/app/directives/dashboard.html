@@ -15,5 +15,6 @@
 <p
   ng-repeat="notification in dashboard().notifications | activeNotifications"
   class="soon"
-  important-markup="notification.description">
+  important-markup="notification.description"
+  time-till-moment="notification">
 </p>
